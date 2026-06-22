@@ -18,7 +18,6 @@ body {
   position: relative;
 }
 .card-1 {
-  background-color: #d6a4b0;
   padding: 10px 50px;
   width: 400px;
   display: flex;
@@ -99,4 +98,7 @@ button{
 .card-1,
 .card-2{
     transition: all 1s ease;
+}
+.active{
+  background-color: #d6a4b0;
 }

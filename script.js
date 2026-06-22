@@ -1,50 +1,70 @@
 //selecting score elements and setting default score 0
 
-const score1el = document.querySelector(".score--0");
-const score2el = document.querySelector(".score--1");
+const score1el = document.getElementById("score--1");
+const score2el = document.getElementById("score--2");
+const player1el = document.getElementById("player-1");
+const player2el = document.getElementById("player-2");
 const diceimg = document.getElementById("dice-img");
 const rollDice = document.getElementById("roll-dice");
-const player1 = document.getElementById("player-1");
-const score1 = document.querySelector(".score-1");
-const score2 = document.querySelector(".score-2");
+const currentScorceel = document.querySelector(".current-score");
+const currentScorceel1 = document.querySelector(".current-score1");
 const card1 = document.querySelector(".card-1");
 const card2 = document.querySelector(".card-2");
-const player2 = document.getElementById("player-2");
-const holdbtn = document.getElementById("hold")
+const holdbtn = document.getElementById("hold");
+const newgame = document.getElementById("new-game");
 
 score1el.textContent = 0;
 score2el.textContent = 0;
 let currentScore = 0;
-let total = 0 
+let total = 0;
+let score = [0, 0, 0];
+let activePlayer = 1;
 
-
+function switchPlayer() {
+  document.getElementById(`current-score--${activePlayer}`).textContent = 0;
+  activePlayer = activePlayer === 1 ? 2 : 1;
+  currentScore = 0;
+  card1.classList.toggle("active");
+  card2.classList.toggle("active");
+}
 //dice roll function
 rollDice.addEventListener("click", function () {
-
-    diceimg.style.display = "block"
+  diceimg.style.display = "block";
   let Dice = Math.floor(Math.random() * 6) + 1;
   diceimg.src = `${Dice}.png`;
 
-
-  //Adding Current score in player 1
-  if (Dice === 1) {
-    card1.style.backgroundColor = "#af6e8e";
-    score1.textContent = 0
-    card2.style.backgroundColor = "#d6a4b0"
+  if (Dice !== 1) {
+    //Add to current score
+    currentScore += Dice;
+    document.getElementById(`current-score--${activePlayer}`).textContent =
+      currentScore;
   } else {
-    currentScore = currentScore + Dice;
-    score1.textContent = currentScore;
-    console.log(currentScore);
-    
+    //switch next player
+    switchPlayer();
   }
-  
 });
 
-//Player1 clicking Hold 
- holdbtn.addEventListener("click",()=>{
-    total = currentScore
-    score1el.textContent = total
-    card1.style.backgroundColor = "#af6e8e";
-    card2.style.backgroundColor = "#d6a4b0"
- })
+newgame.addEventListener("click", () => {
+  score1el.textContent = 0;
+  score2el.textContent = 0;
+  activePlayer = 1 ;
+  currentScore  = 0 ;
+  score[0,0,0]
+  console.log("clicked")
+  card1.classList.add("active");
+  card2.classList.remove("active");
+});
+
+
+
+//hold logic
+
+holdbtn.addEventListener("click", () => {
+  score[activePlayer] += currentScore;
+  document.getElementById(`score--${activePlayer}`).textContent =
+    score[activePlayer];
+  console.log("score2el");
+  switchPlayer();
+});
+
 
