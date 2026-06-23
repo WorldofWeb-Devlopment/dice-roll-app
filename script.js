@@ -74,7 +74,7 @@ holdbtn.addEventListener("click", () => {
         .classList.remove("active");
       diceimg.style.display = "none";
       holdbtn.disabled = true;
-      newgame.disabled = true;
+  
       rollDice.disabled = true;
       document.getElementById(`player-${activePlayer}`).innerHTML = "You Win ";
     } else {
