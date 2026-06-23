@@ -102,3 +102,6 @@ button{
 .active{
   background-color: #d6a4b0;
 }
+.success{
+  background-color: rgb(117, 0, 0);
+}

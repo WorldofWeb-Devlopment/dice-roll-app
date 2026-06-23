@@ -19,6 +19,7 @@ let currentScore = 0;
 let total = 0;
 let score = [0, 0, 0];
 let activePlayer = 1;
+let playing = true;
 
 function switchPlayer() {
   document.getElementById(`current-score--${activePlayer}`).textContent = 0;
@@ -47,24 +48,37 @@ rollDice.addEventListener("click", function () {
 newgame.addEventListener("click", () => {
   score1el.textContent = 0;
   score2el.textContent = 0;
-  activePlayer = 1 ;
-  currentScore  = 0 ;
-  score[0,0,0]
-  console.log("clicked")
+  activePlayer = 1;
+  currentScore = 0;
+  score[(0, 0, 0)];
+  console.log("clicked");
   card1.classList.add("active");
   card2.classList.remove("active");
 });
 
-
-
 //hold logic
 
 holdbtn.addEventListener("click", () => {
-  score[activePlayer] += currentScore;
-  document.getElementById(`score--${activePlayer}`).textContent =
-    score[activePlayer];
-  console.log("score2el");
-  switchPlayer();
+  if (playing) {
+    score[activePlayer] += currentScore;
+    document.getElementById(`score--${activePlayer}`).textContent =
+      score[activePlayer];
+    console.log("score2el");
+
+    if (score[activePlayer] >= 10) {
+      playing = false;
+
+      document.querySelector(`.card-${activePlayer}`).classList.add("success");
+      document
+        .querySelector(`.card-${activePlayer}`)
+        .classList.remove("active");
+      diceimg.style.display = "none";
+      holdbtn.disabled = true;
+      newgame.disabled = true;
+      rollDice.disabled = true;
+      document.getElementById(`player-${activePlayer}`).innerHTML = "You Win ";
+    }
+  } else {
+    switchPlayer();
+  }
 });
-
-
