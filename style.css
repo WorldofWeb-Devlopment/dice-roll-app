@@ -119,9 +119,15 @@ button{
     font-size: 1.3rem;
   }
   .btns{
-    font-size: 1rem;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+     
   }
   p{
     font-size: 0.8rem;
+  }
+  .container{
+    justify-content: space-between;
   }
 }
