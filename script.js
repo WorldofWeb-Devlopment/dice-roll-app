@@ -65,7 +65,7 @@ holdbtn.addEventListener("click", () => {
       score[activePlayer];
     console.log("score2el");
 
-    if (score[activePlayer] >= 10) {
+    if (score[activePlayer] >= 100) {
       playing = false;
 
       document.querySelector(`.card-${activePlayer}`).classList.add("success");
