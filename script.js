@@ -77,8 +77,8 @@ holdbtn.addEventListener("click", () => {
       newgame.disabled = true;
       rollDice.disabled = true;
       document.getElementById(`player-${activePlayer}`).innerHTML = "You Win ";
+    } else {
+      switchPlayer();
     }
-  } else {
-    switchPlayer();
-  }
+    }
 });
